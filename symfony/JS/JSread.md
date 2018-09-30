@@ -47,3 +47,19 @@
 		   }
 	   }
    	}
+
+#多选中只能选择一个 #
+	
+	<form id="test">
+	    <input name="check1" type="checkbox" />check1
+	    <input name="check2" type="checkbox" />check2
+	    <input name="check3" type="checkbox" />check3
+	</form>
+	 
+	<script>
+	$(document).ready(function(){
+	    $('#test').find('input[type=checkbox]').bind('click', function(){
+	        $('#test').find('input[type=checkbox]').not(this).attr("checked", false);
+	    });
+	});
+	</script>
