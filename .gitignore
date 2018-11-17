@@ -26,3 +26,4 @@ web/.env
 /src/MeetingBundle/Entity/*.php~
 /web/uploads
 *.html
+.git
