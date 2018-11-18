@@ -8,11 +8,7 @@
 dotenv简介
 ---------
 
-dotenv 解决一套代码在多处部署时各处代码所用的环境变量及配置的相互独立问题:
-
-1. 团队协作时, 不同成员本地开发环境的系统,服务器类型,数据库用户密码都可能不同. 如果环境配置写死在项目中, 可能每次更新完代码都需要重新修改本地配置.
-
-2. 本地与线上环境配置肯定不同, 如果直接利用版本库部署代码到线上, 必须防止将本地配置推送到线上.
+dotenv 解决一套代码在多处部署时各处代码所用的环境变量及配置的相互独立问题:止将本地配置推送到线上.
 
 
 
@@ -28,7 +24,11 @@ composer require snowair/think-dotenv:dev-master
 
 ##配置篇
 
-* 在 Common/Conf/tags.php 增加一个行为,如果已经添加过,就不用再添加了:
+* 在 Common/Conf/tags.php 增加一个行为,如果已经添加过,
+
+1. 团队协作时, 不同成员本地开发环境的系统,服务器类型,数据库用户密码都可能不同. 如果环境配置写死在项目中, 可能每次更新完代码都需要重新修改本地配置.
+
+2. 本地与线上环境配置肯定不同, 如果直接利用版本库部署代码到线上, 必须防就不用再添加了:
     ```
     return array(
          'app_init'=>array(
@@ -61,13 +61,6 @@ return array(
 );
 ```
 
-###现在
-```
-.env
-
-DB_TYPE=mysql
-DB_HOST=localhost
-DB_NAME=dbname
 DB_USER=root
 ....
 
@@ -75,11 +68,32 @@ DB_USER=root
 
 应用启动后, .env 文件中的配置项将覆盖config.php中的这些同名的配置项.
 
+###现在
+```
+.env
+
+DB_TYPE=mysql
+DB_HOST=localhost
+DB_NAME=dbname
 因此, 不同的机器,通过创建自己的.env文件,就可以避免开发和部署时的配置冲突问题.
 
 注: windows平台创建以`.`号开头的特殊文件可能需要从编辑器中创建.
-
 现在你就可以去验证下是否OK了。
+
+			database.php配置
+
+			return [
+		    // 数据库类型
+		    'type'            => 'mysql',
+		    // 服务器地址
+		    'hostname'        => ENV::get('hostname'),
+		    // 数据库名
+		    'database'        => ENV::get('database'),
+		    // 用户名
+		    'username'        => ENV::get('username'),
+		    // 密码
+		    'password'        => ENV::get('password'),
+
 
 
 ### 复杂配置
