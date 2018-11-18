@@ -86,13 +86,13 @@ DB_NAME=dbname
 		    // 数据库类型
 		    'type'            => 'mysql',
 		    // 服务器地址
-		    'hostname'        => ENV::get('hostname'),
+		    'hostname'        => ENV::get('hostname','默认值'),
 		    // 数据库名
-		    'database'        => ENV::get('database'),
+		    'database'        => ENV::get('database','默认值'),
 		    // 用户名
-		    'username'        => ENV::get('username'),
+		    'username'        => ENV::get('username','默认值'),
 		    // 密码
-		    'password'        => ENV::get('password'),
+		    'password'        => ENV::get('password','默认值'),
 
 
 
