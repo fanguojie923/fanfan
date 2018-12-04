@@ -36,6 +36,12 @@
 	     */
 	    public function load(ObjectManager $manager)
 	    {
+			//截断表
+			  $result = $this->truncateTable($manager);
+	        if($result['code'] == 0){
+	            echo $result['msg'];
+	            return false;
+	        }
 	        /**
 	         *
 	         * @var \AdministrationBundle\Repository\PowersTypeRepository $repo
@@ -54,7 +60,33 @@
 	            $manager->flush();
 	        }
 	    }
+		
+		private function truncateTable($em)
+    {
+        $classMetaData = $em->getClassMetadata(Menu::class);
+        $connection = $em->getConnection();
+        $dbPlatform = $connection->getDatabasePlatform();
+        $connection->beginTransaction();
+        try {
+            $connection->query('SET FOREIGN_KEY_CHECKS=0');
+            $q = $dbPlatform->getTruncateTableSql($classMetaData->getTableName());
+            $connection->executeUpdate($q);
+            $connection->query('SET FOREIGN_KEY_CHECKS=1');
+            $connection->commit();
+            return [
+                'code' => 1,
+                'msg' => '执行成功'
+            ];
+        }catch (\Exception $e) {
+            $connection->rollback();
+            return [
+                'code' => 0,
+                'msg' => '执行失败'
+            ];
+        }
+    }
 	
+
 	    private function getPowersType()
 	    {
 	        $powerstype = [
