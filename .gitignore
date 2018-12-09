@@ -27,3 +27,4 @@ web/.env
 /web/uploads
 *.html
 .git
+.idea
