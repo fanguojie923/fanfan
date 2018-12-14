@@ -1,0 +1,120 @@
+<style> @media print{ .hljs{overflow: visible; word-wrap: break-word !important;} }</style></head><body><div class="markdown-body">
+<h1 id="toc_0">文件和目录（理解）</h1>
+
+<h2 id="toc_1">目标</h2>
+
+<ul>
+<li>理解 Linux 文件目录的结构</li>
+</ul>
+
+<h2 id="toc_2">01. 单用户操作系统和多用户操作系统（科普）</h2>
+
+<ul>
+<li><p><strong>单用户操作系统</strong>：指一台计算机在同一时间 <strong>只能由一个用户</strong> 使用，一个用户独自享用系统的全部硬件和软件资源</p>
+
+<ul>
+<li><strong>Windows XP</strong> 之前的版本都是单用户操作系统</li>
+</ul></li>
+<li><p><strong>多用户操作系统</strong>：指一台计算机在同一时间可以由 <strong>多个用户</strong> 使用，多个用户共同享用系统的全部硬件和软件资源</p>
+
+<ul>
+<li><strong>Unix</strong> 和 <strong>Linux</strong> 的设计初衷就是多用户操作系统</li>
+</ul></li>
+</ul>
+
+<h2 id="toc_3">02. <code>Windows</code> 和 <code>Linux</code> 文件系统区别</h2>
+
+<h3 id="toc_4">2.1 <code>Windows</code> 下的文件系统</h3>
+
+<ul>
+<li>在 <code>Windows</code> 下，打开 “计算机”，我们看到的是一个个的驱动器盘符：</li>
+</ul>
+
+<p><img src="media/14927564336623/001_Windows%E4%B8%8B%E7%9A%84%E5%A4%9A%E4%B8%AA%E7%9B%98.png" alt="001_Windows下的多个盘"/>￼</p>
+
+<ul>
+<li>每个驱动器都有自己的根目录结构，这样形成了多个树并列的情形，如图所示：</li>
+</ul>
+
+<p><img src="media/14927564336623/001-Windows%E4%B8%8B%E5%A4%9A%E4%B8%AA%E7%9B%98%E4%B8%BA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%AE%E5%BD%95%E5%88%86%E6%94%AF.png" alt="001-Windows下多个盘为节点的目录分支"/>￼</p>
+
+<h3 id="toc_5">2.2 <code>Linux</code> 下的文件系统</h3>
+
+<ul>
+<li>在 <code>Linux</code> 下，我们是看不到这些驱动器盘符，我们看到的是文件夹（目录）：</li>
+</ul>
+
+<p><img src="media/14927564336623/002_Ubuntu%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" alt="002_Ubuntu文件目录"/>￼</p>
+
+<ul>
+<li><code>Ubuntu</code> 没有盘符这个概念，只有一个根目录 <code>/</code>，所有文件都在它下面</li>
+</ul>
+
+<p><img src="media/14927564336623/003-Linux%E7%9A%84%E6%A0%91%E5%BD%A2%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="003-Linux的树形示意图"/>￼</p>
+
+<h3 id="toc_6">2.3 用户目录</h3>
+
+<p>位于 <code>/home/user</code>，称之为用户工作目录或家目录，表示方式：</p>
+
+<pre><code class="language-bash">/home/user
+~
+</code></pre>
+
+<h3 id="toc_7">2.4 <code>Linux</code> 主要目录速查表</h3>
+
+<ul>
+<li>/：根目录，<strong>一般根目录下只存放目录</strong>，在 linux 下有且只有一个根目录，所有的东西都是从这里开始
+
+<ul>
+<li>当在终端里输入 <code>/home</code>，其实是在告诉电脑，先从 <code>/</code>（根目录）开始，再进入到 <code>home</code> 目录</li>
+</ul></li>
+<li>/bin、/usr/bin：可执行二进制文件的目录，如常用的命令 ls、tar、mv、cat 等</li>
+<li>/boot：放置 linux 系统启动时用到的一些文件，如 linux 的内核文件：<code>/boot/vmlinuz</code>，系统引导管理器：<code>/boot/grub</code></li>
+<li>/dev：存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱<code>mount /dev/cdrom /mnt</code></li>
+<li>/etc：系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有 
+
+<ul>
+<li>/etc/inittab</li>
+<li>/etc/fstab</li>
+<li>/etc/init.d</li>
+<li>/etc/X11</li>
+<li>/etc/sysconfig</li>
+<li>/etc/xinetd.d</li>
+</ul></li>
+<li>/home：系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下
+
+<ul>
+<li><code>~</code> 表示当前用户的家目录</li>
+<li><code>~edu</code> 表示用户 <code>edu</code> 的家目录</li>
+</ul></li>
+<li>/lib、/usr/lib、/usr/local/lib：系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助</li>
+<li>/lost+fount：系统异常产生错误时，会将一些遗失的片段放置于此目录下</li>
+<li>/mnt: /media：光盘默认挂载点，通常光盘挂载于 /mnt/cdrom 下，也不一定，可以选择任意位置进行挂载</li>
+<li>/opt：给主机额外安装软件所摆放的目录</li>
+<li>/proc：此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的文件有：/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/* 等</li>
+<li>/root：系统管理员root的家目录</li>
+<li>/sbin、/usr/sbin、/usr/local/sbin：放置系统管理员使用的可执行命令，如 fdisk、shutdown、mount 等。与 /bin 不同的是，这几个目录是给系统管理员 root 使用的命令，一般用户只能&quot;查看&quot;而不能设置和使用</li>
+<li>/tmp：一般用户或正在执行的程序临时存放文件的目录，任何人都可以访问，重要数据不可放置在此目录下</li>
+<li>/srv：服务启动之后需要访问的数据目录，如 www 服务需要访问的网页数据存放在 /srv/www 内</li>
+<li>/usr：应用程序存放目录
+
+<ul>
+<li>/usr/bin：存放应用程序</li>
+<li>/usr/share：存放共享数据</li>
+<li>/usr/lib：存放不能直接运行的，却是许多程序运行所必需的一些函数库文件</li>
+<li>/usr/local：存放软件升级包</li>
+<li>/usr/share/doc：系统说明文件存放目录</li>
+<li>/usr/share/man：程序说明文件存放目录</li>
+</ul></li>
+<li>/var：放置系统执行过程中经常变化的文件
+
+<ul>
+<li>/var/log：随时更改的日志文件 </li>
+<li>/var/spool/mail：邮件存放的目录</li>
+<li>/var/run：程序或服务启动后，其 PID 存放在该目录下</li>
+</ul></li>
+</ul>
+
+</div></body>
+
+</html>
