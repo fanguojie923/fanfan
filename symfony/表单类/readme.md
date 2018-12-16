@@ -15,6 +15,14 @@
 	            return $repo->createQueryBuilder('a');
 	        },//条件
 	        'choice_label' => 'name',  //返回要查询字段列表
+	         'choice_value' => 'code',//选中value 设置 字段名name的值
+	         'choice_label' => function ($choiceValue, $key, $value) {//$choiceValue选中的值//$key字段名//value字段值
+	         
+	                if ($value == $choiceValue) {
+	                    return 'Definitely!';
+	                }
+	        		return strtoupper($key);
+	    	},
 	    ])
 
 # 单选 #
