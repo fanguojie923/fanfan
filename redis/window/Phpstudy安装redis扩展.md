@@ -41,3 +41,47 @@
 ![img](https://img-blog.csdn.net/20180320172333595)
 
 完成！！！
+
+##### 尝试代码调用
+
+尝试一下用写代码使用一下。创建一个PHP文件，输入以下代码：
+
+```
+<?php
+
+
+
+    $redis = new Redis();  //实例化这个类
+
+
+
+	$redis->connect('localhost', 6379);  //指定主机和端口进行连接
+
+
+
+	$redis->set('myname', 'mclink'); //设置键值对
+
+
+
+	$res = $redis->get('myname');  //获取值
+
+
+
+	echo "我设置的myname键的值为：".$res;  //打印输出
+```
+
+然后访问一下这个文件。可以看到：
+
+![img](https://img-blog.csdn.net/20180326150238548)
+
+如果你访问失败了，可能你是忘记了开启服务器端 到redis 安装目录
+
+```
+redis-server.exe redis.windows.conf
+```
+
+，不然应该是不会有问题的。
+
+好了现在你的PHPstudy已经可以正常使用redis数据库了。
+
+ 
