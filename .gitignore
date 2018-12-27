@@ -25,6 +25,6 @@ web/.env
 .idea
 /src/MeetingBundle/Entity/*.php~
 /web/uploads
-*.html
+# *.html
 .git
 
