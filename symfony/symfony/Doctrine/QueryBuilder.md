@@ -116,34 +116,34 @@
 		$p = $q->execute();
 		
 		public function updateStatus($orderNo, $origin, $new)
-	    {
-	        return $this->createQueryBuilder('o')
-	            ->update()
-	            ->set('o.status', $new)
-	            ->set('o.callbackAt', ':datetime')
-	            ->set('o.updateAt',  ':datetime')
-	            ->where('o.orderNo = :orderNo AND o.status = :origin')
-	            ->setParameters([
-	                'orderNo' => $orderNo,
-	                'origin' => $origin
-	            ])
-	            ->setParameter('datetime', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
-	            ->getQuery()
-	            ->execute();
-	    }
-        
-        public function setRead($mimeId, $toId)
-        {
-            return $this->createQueryBuilder('r')
-            ->update()
-            ->set('r.status', 1)
-            ->where('r.mimeId = :mid AND r.toId = :tid')
-            ->getQuery()
-            ->execute([
-                'mid' => $mimeId,
-                'tid' => $toId
-            ]);
-        }
+		{
+		    return $this->createQueryBuilder('o')
+		        ->update()
+		        ->set('o.status', $new)
+		        ->set('o.callbackAt', ':datetime')
+		        ->set('o.updateAt',  ':datetime')
+		        ->where('o.orderNo = :orderNo AND o.status = :origin')
+		        ->setParameters([
+		            'orderNo' => $orderNo,
+		            'origin' => $origin
+		        ])
+		        ->setParameter('datetime', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
+		        ->getQuery()
+		        ->execute();
+		}
+   	 
+   	 public function setRead($mimeId, $toId)
+   	 {
+   	     return $this->createQueryBuilder('r')
+   	     ->update()
+   	     ->set('r.status', 1)
+   	     ->where('r.mimeId = :mid AND r.toId = :tid')
+   	     ->getQuery()
+   	     ->execute([
+   	         'mid' => $mimeId,
+   	         'tid' => $toId
+   	     ]);
+   	 }
 
 
 - return array result  
@@ -157,29 +157,29 @@
 				   //->getArrayResult();
 	
 		public function getHeaderNav($moduleId, $toArray = false, $ids = null)
-	    {
-	        $qb = $this->createQueryBuilder('r');
-	        $qb->where($qb->expr()
-	            ->andX($qb->expr()
-	            ->eq('r.status', ':status'), $qb->expr()
-	            ->eq('r.pid', ':pid'), $qb->expr()
-	            ->isNotNull('r.icon')))
-	            ->setParameters([
-	            'status' => 1,
-	            'pid' => $moduleId
-	        ]);
-	        if(!empty($ids)){
-	            $qb->andWhere('r.id IN(:ids)')->setParameter('ids', $ids);
-	        }
-	        
-	        if ($toArray) {
-	            return $qb->getQuery()->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
+		{
+		    $qb = $this->createQueryBuilder('r');
+		    $qb->where($qb->expr()
+		        ->andX($qb->expr()
+		        ->eq('r.status', ':status'), $qb->expr()
+		        ->eq('r.pid', ':pid'), $qb->expr()
+		        ->isNotNull('r.icon')))
+		        ->setParameters([
+		        'status' => 1,
+		        'pid' => $moduleId
+		    ]);
+		    if(!empty($ids)){
+		        $qb->andWhere('r.id IN(:ids)')->setParameter('ids', $ids);
+		    }
+		    
+		    if ($toArray) {
+		        return $qb->getQuery()->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
 				// or 
 				return $qb->getQuery()->getArrayResult();
-	        } else {
-	            return $qb->getQuery()->getResult();
-	        }
-	    }
+		    } else {
+		        return $qb->getQuery()->getResult();
+		    }
+		}
 - getResult() VS getArrayResult()
 
 		public function getChildren($pid, $toArray = false)
@@ -212,20 +212,20 @@
 		]		
 
 		public function getChildren($pid, $toArray = false)
-	    {
-	        $qb = $this->createQueryBuilder('d');
-	        $qb->select('d') // change
-	            ->where('d.parentId = :pid AND d.status = :status')
-	            ->setParameters([
-	            'pid' => $pid,
-	            'status' => 1
-	        ]);
+		{
+		    $qb = $this->createQueryBuilder('d');
+		    $qb->select('d') // change
+		        ->where('d.parentId = :pid AND d.status = :status')
+		        ->setParameters([
+		        'pid' => $pid,
+		        'status' => 1
+		    ]);
 			if($toArray){
 				return $qb->getQuery()->useResultCache(true, 86400)->getResult();
 			}else{
 				return $qb->getQuery()->useResultCache(true, 86400)->getArrayResult();
 			}
-	    }
+		}
 		// output
 		// $toARray == true
 		array:12 [▼
@@ -259,19 +259,20 @@
 		]
 - join
 
-		public function getList()
-	    {
-	        return $this->createQueryBuilder('u')
-	            ->select('u.id', 'u.username', 'u.createAt', 'u.updateAt', 'r.rolename')
-	            ->join('u.group', 'r')  // association
-	            //->where('u.status = ?0')
-	            //->setParameter(0, 1) // key, The parameter position or name
-	            ->where('u.status = :status')
-	            ->setParameter('status', 1)
-	            ->getQuery()
-	            ->getResult();
-	       
-	    }
+   public function getList()
+       {
+           return $this->createQueryBuilder('u')
+               ->select('u.id', 'u.username', 'u.createAt', 'u.updateAt', 'r.rolename')
+               ->join('u.group', 'r')  // association
+               //->where('u.status = ?0')
+               //->setParameter(0, 1) // key, The parameter position or name
+               ->where('u.status = :status')
+               ->setParameter('status', 1)
+               ->getQuery()
+               ->getResult();
+          
+
+       }
 - cache result
 
 		return $this->createQueryBuilder('r')
@@ -303,3 +304,30 @@
 		    ->where('email = ' .  $queryBuilder->createPositionalParameter($userInputEmail))
 		;
 		// SELECT id, name FROM users WHERE email = ?
+
+分页做法
+
+```php+HTML
+public function getQuestions($page,$pagesize)
+{
+    $offset = ($page - 1) * $pagesize;
+    $build = $this->createQueryBuilder('q')；
+        
+    return $build ->setMaxResults($pagesize)->setFirstResult($offset)->getQuery()
+        ->getResult();
+}
+```
+
+```php
+public function getHasAnswer($page,$pagesize)
+{
+    $offset = ($page - 1) * $pagesize;
+    $conn = $this->getEntityManager()->getConnection();
+    $sql="SELECT q.id,q.title,a.content,q.zxflId,q.questionid FROM  question q JOIN  answer a  ON a.qid = q.questionid AND a.zxflId = q.zxflId  WHERE q.status = '1' ORDER BY q.createat DESC LIMIT " . $offset . ','. $pagesize;
+    $stmt=$conn->prepare($sql);
+    $stmt->execute();
+    $arr = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    return $arr;
+}
+```
+
