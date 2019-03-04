@@ -28,7 +28,7 @@ https://www.cnblogs.com/isykw/p/6115461.html
 $arr=array(1,43,54,62,21,66,32,78,36,76,39); 
 ```
 
-```
+```php
 function bubbleSort($arr)
 	{
 	//该层循环控制 需要冒泡的轮数
@@ -58,7 +58,7 @@ function bubbleSort($arr)
 
 选择排序(Selection sort)是一种简单直观的排序算法。它的工作原理如下。首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放到排序序列末尾。以此类推，直到所有元素均排序完毕。
 
-```
+```php
   //实现思路 双重循环完成，外层控制轮数，当前的最小值。内层 控制的比较次数
    function select_sort($arr) {
   	//$i 当前最小值的位置， 需要参与比较的元素
@@ -85,3 +85,42 @@ function bubbleSort($arr)
  	return $arr;
  }
 ```
+
+### 快速排序
+
+快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来，且在大部分真实世界的数据，可以决定设计的选择，减少所需时间的二次方项之可能性。
+
+步骤：
+
+- 从数列中挑出一个元素，称为 “基准”（pivot），
+- 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
+- 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
+
+```php
+function quick_sort($arr)
+ {
+ 	//判断参数是否是一个数组
+ 	if(!is_array($arr)) return false;
+ 	//递归出口:数组长度为1，直接返回数组
+ 	$length = count($arr);
+ 	if($length<=1) return $arr;
+  	//数组元素有多个,则定义两个空数组
+ 	$left = $right = [];
+ 	//使用for循环进行遍历，把第一个元素当做比较的对象
+ 	for ($i=1; $i < $length; $i++) { 
+ 		//判断当前元素的大小
+ 		if($arr[$i]<$arr[0]){
+ 			$left[]=$arr[$i];
+ 		}else{
+ 			$right[]=$arr[$i];
+ 		}
+ 	}
+ 	//递归调用
+ 	$left=quick_sort($left);
+ 	$right=quick_sort($right);
+ 	//将所有的结果合并
+ 	return array_merge($left,array($arr[0]),$right);
+ }
+```
+
+<img src="./img/quicksort.gif">
