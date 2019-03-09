@@ -1,16 +1,10 @@
-<a href="./解决忽略文件跟踪问题.md">解决忽略文件跟踪问题</a>
-
-<a href="./账号密码.md">账号密码问题</a>
-
-<a href="./主题配置.md">主题配置</a>
-
-<a href="./分支.md">分支</a>
-
-<a href="./删除凭据.md">git windows删除凭据</a>
-
-<a href="./代码丢失找回.md">代码丢失找回</a>
-
-<a href="./gitignore文件.md">gitignore文件</a>
+- <a href="./解决忽略文件跟踪问题.md">解决忽略文件跟踪问题</a>
+- <a href="./账号密码.md">账号密码问题</a>
+- <a href="./主题配置.md">主题配置</a>
+- <a href="./分支.md">分支</a>
+- <a href="./删除凭据.md">git windows删除凭据</a>
+- <a href="./代码丢失找回.md">代码丢失找回</a>
+- <a href="./gitignore文件.md">gitignore文件</a>
 
 
 
