@@ -1,3 +1,4 @@
+- <a href="./Git 2.0 更改 push default 为‘simple’.md">Git 2.0 更改 push default 为‘simple</a>
 - <a href="./解决忽略文件跟踪问题.md">解决忽略文件跟踪问题</a>
 - <a href="./账号密码.md">账号密码问题</a>
 - <a href="./主题配置.md">主题配置</a>
