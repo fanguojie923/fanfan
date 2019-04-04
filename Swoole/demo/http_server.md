@@ -10,6 +10,18 @@ $server->set([
     'enable_static_handler' => true,
 ]);
 $http->on('request', function ($request, $response) {
+    //传参接收参数
+    $content = [
+        'date:' => date('Y-m-d H:i:s'),
+        'get:'=>$request->get,
+        'post:'=>$request->post,
+         'header:'=>$request->header,
+    ];
+    //日志写入
+    swoole_async_writefile(__DIR__.'/test.log', json_decode($content).PHP_EOL, function($filename) {
+        //todo
+    echo "wirte ok.\n";
+}, FILE_APPEND);
 	//get参数的传递？a=1 用$request->get接收，post 相同用法
     $response->end("<h1>Hello Swoole. #".rand(1000, 9999).json_encode($request->get)."</h1>");
 });
@@ -93,7 +105,7 @@ curl http://127.0.0.1:9501
         access_log  /www/wwwlogs/skt.fgj1013.top.log;
         error_log  /www/wwwlogs/skt.fgj1013.top.error.log;
     }
-   
+
 
 
 
