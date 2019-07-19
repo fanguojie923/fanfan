@@ -3,3 +3,28 @@
 - <a href="./安装.md">CentOS安装</a>
 
 ​		
+
+> Docker虚拟化优点
+
+1）操作 启动快
+
+​	运行时性能可以获取极大提升，管理操作（启动，停止，开始，重启等等）都时以秒或者毫秒级
+
+2）轻量级虚拟化
+
+​	拥有足够的“操作系统”，仅需添加或减小镜像即可，在一台服务器上可以部署100~1000个containers容器。传统虚拟化，虚拟10-20个虚拟机就不错了
+
+3）开源免费
+
+ 开源的，免费的，低成本的，由现代linux内核支持并驱动 ，轻量的container必定可以在一个物理机上开启更多“容器”，注定比VMS要便宜。
+
+4）前景及云支持
+
+​	正在越来越受欢迎，包括各大主流公司都在推动docker的快速发展，性能又很大优势
+
+
+
+Docker 必须先安装防火墙
+
+1. 安装防火墙 yum install firewalld
+2. 开启防火墙  systemctl unmask firewalld   systemctl enablefirewalld    systemctl start firewalld 
