@@ -28,3 +28,10 @@ Docker 必须先安装防火墙
 
 1. 安装防火墙 yum install firewalld
 2. 开启防火墙  systemctl unmask firewalld   systemctl enablefirewalld    systemctl start firewalld 
+3. 开启端口 
+   1. firewall-cmd --zone=public  --add-port=2377/tcp --permanent
+   2. firewall-cmd --zone=public  --add-port=7946/tcp  --permanent
+   3. firewall-cmd --zone=public  --add-port=7946/udp --permanent
+   4. firewall-cmd --zone=public  --add-port=4789/tcp  --permanent
+   5. firewall-cmd --zone=public  --add-port=4789/udp --permanent
+   6. firewall-cmd --reload
