@@ -28,7 +28,11 @@
 
 ​	正在越来越受欢迎，包括各大主流公司都在推动docker的快速发展，性能又很大优势
 
+> 底层技术支持
 
+1. Namespaces:做隔离pid,net,ipc,mnt,uts
+2. Control groups: 做资源限制
+3. Union file systems: Containe和image 分层
 
 Docker 必须先安装防火墙
 
