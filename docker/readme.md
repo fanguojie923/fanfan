@@ -6,7 +6,11 @@
 - <a href="./安装2.md">安装2</a>
 - <a href="./命令帮助.md">命令帮助</a>
 - 使用镜像
-  - ​	<a href="./获取镜像.md">获取镜像</a>
+  - <a href="./获取镜像.md">获取镜像</a>
+    - <a href="./Docker中CentOS7镜像使用systemctl命令方法.md">Docker中CentOS7镜像使用systemctl命令方法</a>
+  - <a href="./删除镜像.md">删除镜像</a>
+- 操作容器
+  - <a href="./删除容器.md">删除容器</a>
 
 ​	
 
