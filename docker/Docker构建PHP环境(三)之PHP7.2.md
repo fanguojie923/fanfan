@@ -1,16 +1,10 @@
 **1、拉取php镜像**
 
-
-
 ```
 docker pull php:7.2-fpm
 ```
 
-
-
 **2、创建项目目录**
-
-
 
 ```
 mkdir -p /wwwroot/server/project
@@ -18,21 +12,13 @@ mkdir php-fpm && cd php-fpm (在server下目录安装)
 mkdir logs
 ```
 
-
-
 **3、运行一个临时php容器**
-
-
 
 ```
 docker run --name testphp -d php:7.2-fpm
 ```
 
-
-
 **4、复制php配置文件等**
-
-
 
 ```
 docker cp testphp:/usr/local/etc/php $PWD/php
@@ -40,11 +26,7 @@ cd php && cp php.ini-development php.ini
 cd ..(返回php-fpm目录下)
 ```
 
-
-
 **5、运行新的php容器**
-
-
 
 ```
 docker run -p 9000:9000 --name php7.2 -v /wwwroot/server/project:/www -v $PWD/php:/usr/local/etc/php 
