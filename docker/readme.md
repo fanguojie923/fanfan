@@ -12,6 +12,7 @@
   - <a href="./Docker构建PHP环境(七)之laravel.md">Docker构建PHP环境(七)之laravel</a>
   - <a href="./Docker用gogs管理git仓库.md">Docker用gogs管理git仓库</a>
 - <a href="./安装2.md">安装2</a>
+- <a href="./安装离线.md">安装离线</a>
 - <a href="./命令帮助.md">命令帮助</a>
 - 使用镜像
   - <a href="./获取镜像.md">获取镜像</a>
