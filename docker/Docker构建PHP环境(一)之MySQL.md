@@ -27,7 +27,7 @@ docker images(查看镜像)
 ```
 
 
-  
+
 
 **2、创建mysql所需文件及目录:**
 
@@ -93,3 +93,15 @@ docker exec -it mysql(容器名称或id) /bin/bash
 ·        **-v $PWD/data:/var/lib/mysql** ：将主机当前目录下的data目录挂载到容器的 /var/lib/mysql 。
 
 ·        **-e MYSQL_ROOT_PASSWORD=root****：**初始化 root 用户的密码。
+
+### 设置root 账户密码
+
+```bash
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+```
+
+```
+#添加远程登录用户
+CREATE USER 'faner'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'faner'@'%';
+```
