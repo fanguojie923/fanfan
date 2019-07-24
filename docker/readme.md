@@ -11,6 +11,7 @@
   - <a href="./Docker构建PHP环境(六)之使用mysqli.md">Docker构建PHP环境(六)之使用mysqli</a>
   - <a href="./Docker构建PHP环境(七)之laravel.md">Docker构建PHP环境(七)之laravel</a>
   - <a href="./Docker用gogs管理git仓库.md">Docker用gogs管理git仓库</a>
+  - 配置负载均衡<https://learnku.com/articles/26026#487694>
 - <a href="./安装2.md">安装2</a>
 - <a href="./安装离线.md">安装离线</a>
 - <a href="./命令帮助.md">命令帮助</a>
