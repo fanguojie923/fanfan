@@ -18,6 +18,7 @@
 
 - [preg_match VS preg_match_all](preg_match.md) 正则匹配对比
 
-- [xml_array](xml_array.md) xml_array数据转换
+- [xml_array](xml_array.php) xml_array数据转换
 
 - [ReflectionClass](ReflectionClass.md) PHP的反射类
+
