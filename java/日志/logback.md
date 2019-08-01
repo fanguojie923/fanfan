@@ -2,7 +2,7 @@ https://blog.csdn.net/u014527912/article/details/81158567
 
 
 
-> **logback-spring.xml**文件
+> **/main/resource/logback-spring.xml**文件
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
