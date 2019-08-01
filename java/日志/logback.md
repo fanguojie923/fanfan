@@ -7,7 +7,8 @@ https://blog.csdn.net/u014527912/article/details/81158567
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="D://javaLogs/envirment"/>
     <!--控制台输出-->
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -36,7 +37,7 @@ https://blog.csdn.net/u014527912/article/details/81158567
         <!--滚动策略，这里使用基于时间的滚动策略，每天产生一个文件-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件输出的路径-->
-            <fileNamePattern>D:\jack\code\sell\info.%d.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/logs/info.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
@@ -54,7 +55,7 @@ https://blog.csdn.net/u014527912/article/details/81158567
         <!--滚动策略，这里使用基于时间的滚动策略，每天产生一个文件-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件输出的路径-->
-            <fileNamePattern>D:\jack\code\sell\error.%d.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/logs/error.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
