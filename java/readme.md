@@ -3,6 +3,7 @@
 > 基础
 
 - <a href="Java基础知识.md">Java基础知识.md</a>
+- <a href="java泛型通配符T,E,K,V的区别.md">java泛型通配符T,E,K,V的区别</a>
 
 > ​	springboot
 
@@ -15,6 +16,7 @@
 
 > <a href="./mybatis-plus/">**mybatis-plus**使用</a>
 
-
+> **shiro权限**参考链接<https://juejin.im/post/59f1b2766fb9a0450e755993#heading-19>
 
 ​	
+
