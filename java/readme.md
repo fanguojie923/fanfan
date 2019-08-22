@@ -23,4 +23,9 @@
 
 > **shiro权限**参考链接<https://juejin.im/post/59f1b2766fb9a0450e755993#heading-19>
 
-​	
+> ​	**部署环境**
+>
+
+- ​	安装docker--参考docker安装手册
+- ​    <a href="./部署/安装JDK1.8.md">安装JDK1.8</a>
+- ​    <a href="./部署/安装JDK1.8.md">安装Maven</a>
