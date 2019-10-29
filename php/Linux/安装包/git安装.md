@@ -80,3 +80,7 @@ export PATH
 
 ⑧、输入命令 git --version ，查看安装的git版本，校验通过，安装成功。
 
+
+
+<a href="https://www.cnblogs.com/imyalost/p/8777684.html">原作者</a>
+
